@@ -35,7 +35,7 @@ class MyRobot(threading.Thread):
 		return title
 
 	def db_save(self, data):
-		conn = sqlite3.connect('petpet.db')
+		conn = sqlite3.connect('data.sqlite')
 		c = conn.cursor()
 		sql = "INSERT INTO articles (title, content, article_id, url, created_at) VALUES ('%s','%s', %s, '%s', %s)"%(data['title'], data['content'], data['article_id'], data['url'], time.time())
 
@@ -61,26 +61,28 @@ class MyRobot(threading.Thread):
 			print(e.reason)
 
 if __name__ == '__main__':
-	conn = sqlite3.connect('petpet.db')
-	c = conn.cursor()
-	max_id = c.execute('select max(article_id) from articles')
-	next_id = 0
-	for xx in max_id:
-		next_id = xx[0]
-	next_id = next_id+1
-	print(next_id)
-	conn.close();
-	while true
-		conn = sqlite3.connect('petpet.db')
-		c = conn.cursor()
-		max_id = c.execute('select id from articles')
-		if max_id.length>0
-			thread = MyRobot(i)
-			thread.start()
-		next_id = next_id+1
-		print(next_id)
-		conn.close();
+	# conn = sqlite3.connect('data.sqlite')
+	# c = conn.cursor()
+	# max_id = c.execute('select max(article_id) from articles')
+	# next_id = 0
+	# for xx in max_id:
+	# 	next_id = xx[0]
+	# next_id = next_id+1
+	# print(next_id)
+	# conn.close();
+	# while true
+	# 	conn = sqlite3.connect('data.sqlite')
+	# 	c = conn.cursor()
+	# 	max_id = c.execute('select id from articles where id=%s'%(next_id))
+	# 	if max_id.length>0:
+	# 		thread = MyRobot(next_id)
+	# 		thread.start()
+	# 	else:
+	# 		break
+	# 	next_id = next_id+1
+	# 	print(next_id)
+	# 	conn.close();
 
-	for i in range(3):
+	for i in range(28):
 		thread = MyRobot(i)
 		thread.start()
