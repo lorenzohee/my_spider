@@ -6,4 +6,4 @@ article_id integer,
 url_from text,
 is_published integer,
 articleType_id integer,
-created_at datetime)
+create_time datetime)
