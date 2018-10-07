@@ -37,7 +37,7 @@ class MyRobot(threading.Thread):
 	def db_save(self, data):
 		conn = sqlite3.connect('data.sqlite')
 		c = conn.cursor()
-		sql = "INSERT INTO articles (title, content, article_id, url_from, create_time, is_published, articleType_id) VALUES ('%s','%s', %s, '%s', %s, 0, 1)"%(data['title'], data['content'], data['article_id'], data['url'], time.time())
+		sql = "INSERT INTO articles (title, content, article_id, url_from, is_published, articleType_id) VALUES ('%s','%s', %s, '%s', 0, 1)"%(data['title'], data['content'], data['article_id'], data['url'])
 
 		c.execute(sql)
 		conn.commit()
