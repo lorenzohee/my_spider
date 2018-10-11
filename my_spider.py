@@ -62,7 +62,6 @@ class MyRobot(threading.Thread):
 			print(e.reason)
 
 if __name__ == '__main__':
-<<<<<<< HEAD
 	for i in range(65):
 		thread = MyRobot(i, 'http://www.weipet.cn/common/xunlian/xunlian-a')
 		thread.start()
@@ -74,30 +73,4 @@ if __name__ == '__main__':
 		thread.start()
 	for i in range(127):
 		thread = MyRobot(i, 'http://www.weipet.cn/common/jibing/jibing-a')
-=======
-	# conn = sqlite3.connect('data.sqlite')
-	# c = conn.cursor()
-	# max_id = c.execute('select max(article_id) from articles')
-	# next_id = 0
-	# for xx in max_id:
-	# 	next_id = xx[0]
-	# next_id = next_id+1
-	# print(next_id)
-	# conn.close();
-	# while true
-	# 	conn = sqlite3.connect('data.sqlite')
-	# 	c = conn.cursor()
-	# 	max_id = c.execute('select id from articles where id=%s'%(next_id))
-	# 	if max_id.length>0:
-	# 		thread = MyRobot(next_id)
-	# 		thread.start()
-	# 	else:
-	# 		break
-	# 	next_id = next_id+1
-	# 	print(next_id)
-	# 	conn.close();
-
-	for i in range(28):
-		thread = MyRobot(i)
->>>>>>> a02dd5831abd6b9dbd27b8b3904f793fd96826cd
 		thread.start()
