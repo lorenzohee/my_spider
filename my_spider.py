@@ -13,9 +13,10 @@ import time
 
 
 class MyRobot(threading.Thread):
-	def __init__(self, num):
+	def __init__(self, num, url):
 		threading.Thread.__init__(self)
 		self.num = num
+		self.url = url
 
 	def save_data(self, data, filename):
 		if not os.path.exists('blog'):
@@ -43,7 +44,7 @@ class MyRobot(threading.Thread):
 		conn.commit()
 
 	def run(self):
-		url = 'http://www.weipet.cn/common/huli/huli-a' + str(self.num) + '.html'
+		url = self.url + str(self.num) + '.html'
 		try:
 			res = urllib.request.urlopen(url)
 			data = res.read()
@@ -61,26 +62,15 @@ class MyRobot(threading.Thread):
 			print(e.reason)
 
 if __name__ == '__main__':
-	conn = sqlite3.connect('petpet.db')
-	c = conn.cursor()
-	max_id = c.execute('select max(article_id) from articles')
-	next_id = 0
-	for xx in max_id:
-		next_id = xx[0]
-	next_id = next_id+1
-	print(next_id)
-	conn.close();
-	while true
-		conn = sqlite3.connect('petpet.db')
-		c = conn.cursor()
-		max_id = c.execute('select id from articles')
-		if max_id.length>0
-			thread = MyRobot(i)
-			thread.start()
-		next_id = next_id+1
-		print(next_id)
-		conn.close();
-
-	for i in range(3):
-		thread = MyRobot(i)
+	for i in range(65):
+		thread = MyRobot(i, 'http://www.weipet.cn/common/xunlian/xunlian-a')
+		thread.start()
+	for i in range(46):
+		thread = MyRobot(i, 'http://www.weipet.cn/common/weiyang/weiyang-a')
+		thread.start()
+	for i in range(37):
+		thread = MyRobot(i, 'http://www.weipet.cn/common/shengyu/shengyu-a')
+		thread.start()
+	for i in range(127):
+		thread = MyRobot(i, 'http://www.weipet.cn/common/jibing/jibing-a')
 		thread.start()
